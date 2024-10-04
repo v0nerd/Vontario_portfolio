@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vontario Taylor's Interactive Resume</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+      /* Custom 3D effect for cards */
+      .hover-3d:hover {
+        transform: rotateY(10deg) rotateX(10deg);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .hover-3d {
+        transition: all 0.5s ease;
+      }
+
+      /* Custom animation for fading effect */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in {
+        animation: fadeIn 1.5s ease-in-out;
+      }
+
+      /* Smooth scroll */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Full-screen background for Three.js */
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        background-color: #1e1e2d;
+        background-image: url("https://media.licdn.com/dms/image/v2/C5612AQHeW3Od_Bv6Pg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1585666065426?e=2147483647&v=beta&t=a8KuVm64w_5TgAYFh_0dwFxVJBbpCkfPOqDIKt7yIAY");
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+      }
+
+      canvas {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+    </style>
+  </head>
+
+  <body class="text-white font-sans">
+    <canvas id="bg"></canvas>
+    <!-- Three.js canvas for the background -->
+
+    <!-- Header Section -->
+    <header
+      class="h-screen flex flex-col justify-center items-center text-center"
+    >
+      <h1 class="text-6xl font-bold mb-6 fade-in">Vontario Taylor</h1>
+      <p class="text-xl mb-6 fade-in">
+        Senior Software Engineer | Machine Learning Engineer | AI & Blockchain
+        Expert | Bittensor Incentive Mechanism Developer
+      </p>
+      <a
+        href="#about"
+        class="bg-white text-blue-500 py-3 px-6 rounded-full hover:bg-gray-200 hover:text-blue-700 transition ease-in-out delay-150 hover-3d"
+        >Scroll Down</a
+      >
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-10 text-center">
+      <h2 class="text-5xl font-bold mb-12 fade-in">About Me</h2>
+      <div class="max-w-5xl mx-auto">
+        <p class="text-lg leading-relaxed fade-in">
+          A seasoned Senior Software Engineer with over 10 years of expertise in
+          AI/ML and blockchain technologies. Proven leader in driving innovative
+          AI model development, spearheading large-scale projects, and
+          integrating decentralized solutions on blockchain platforms.
+          Specialized in the application of deep learning, predictive analytics,
+          and generative AI to build scalable, high-performance systems.
+          Currently focused on enhancing AI models through blockchain-based
+          incentivization in the Bittensor ecosystem. Known for delivering
+          impactful, cutting-edge solutions at the intersection of AI and
+          blockchain technology, fostering innovation and efficiency.
+        </p>
+      </div>
+    </section>
+
+    <!-- Skills Section with Sliding Animation -->
+    <section class="bg-gray-900 py-20 px-10 text-center">
+      <h2 class="text-5xl font-bold mb-12 fade-in">Skills</h2>
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left"
+      >
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:translate-y-2"
+        >
+          <h3 class="text-3xl font-semibold mb-4">Programming Languages</h3>
+          <p>JavaScript, Python, C++, Rust, C#, Java, Typescript</p>
+        </div>
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:translate-y-2"
+        >
+          <h3 class="text-3xl font-semibold mb-4">
+            Artificial Intelligence & Machine Learning
+          </h3>
+          <p>
+            Deep Learning, Generative AI, LLMs (including LLaMA), AI Model
+            Development, Predictive Analytics, Neuro-Linguistic Programming
+            (NLP), Fine-tuning, LASSO-LSTM, FinBERT model, LoRA, GAN (Generative
+            Adversarial Network) model, RAG (Retrieval-Augmented Generation)
+          </p>
+        </div>
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:translate-y-2"
+        >
+          <h3 class="text-3xl font-semibold mb-4">Speech Technologies</h3>
+          <p>
+            Text-to-Speech (TTS), Automatic Speech Recognition (ASR), Tacotron 2
+            model
+          </p>
+        </div>
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:translate-y-2"
+        >
+          <h3 class="text-3xl font-semibold mb-4">
+            Blockchain & Decentralization
+          </h3>
+          <p>
+            Incentive Mechanisms, Decentralized Networks, Bittensor Integration,
+            Solidity, Smart Contracts, EVM, WEB3.js, Rust
+          </p>
+        </div>
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:translate-y-2"
+        >
+          <h3 class="text-3xl font-semibold mb-4">API Development</h3>
+          <p>
+            RESTful APIs, API Integration, Cloud Computing Integration,
+            LangChain
+          </p>
+        </div>
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:translate-y-2"
+        >
+          <h3 class="text-3xl font-semibold mb-4">Cloud Technologies</h3>
+          <p>
+            Amazon Web Services (AWS), Kubernetes, Docker, Microsoft Azure,
+            Microsoft Dynamics
+          </p>
+        </div>
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:translate-y-2"
+        >
+          <h3 class="text-3xl font-semibold mb-4">
+            Data Engineering & Analytics
+          </h3>
+          <p>
+            Predictive Analytics, Stock Price Prediction, Data Engineering,
+            MACD, RSI, SMI, Cypher/SQL Query Generation, WAR, xG metrics, Hive,
+            Transact-SQL (T-SQL), Haskell
+          </p>
+        </div>
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:translate-y-2"
+        >
+          <h3 class="text-3xl font-semibold mb-4">Computer Vision</h3>
+          <p>YOLOv3 model</p>
+        </div>
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:translate-y-2"
+        >
+          <h3 class="text-3xl font-semibold mb-4">Software Development</h3>
+          <p>
+            Python Development, Full-stack Engineering, Data Modeling,
+            Automation, SDLC, C#, .NET Framework
+          </p>
+        </div>
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:translate-y-2"
+        >
+          <h3 class="text-3xl font-semibold mb-4">
+            Reliability & System Performance
+          </h3>
+          <p>Reliability Engineering, System Performance, Data Integrity</p>
+        </div>
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:translate-y-2"
+        >
+          <h3 class="text-3xl font-semibold mb-4">Soft Skills</h3>
+          <p>
+            Leadership, Collaboration, Problem Solving, Communication, Creative
+            & Technical Writing, Microsoft Office
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="py-20 px-10 text-center">
+      <h2 class="text-5xl font-bold mb-12 fade-in">Professional Experience</h2>
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:scale-105"
+        >
+          <h3 class="text-3xl font-semibold mb-4">
+            Technical Analyst & AI/ML Content Creator
+          </h3>
+          <p>Towards AI | October 2021 – Present</p>
+        </div>
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:scale-105"
+        >
+          <h3 class="text-3xl font-semibold mb-4">Senior Software Engineer</h3>
+          <p>Intetics | November 2022 – Present</p>
+        </div>
+
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:scale-105"
+        >
+          <h3 class="text-3xl font-semibold mb-4">
+            Project Development Manager
+          </h3>
+          <p>Kensho Technologies | January 2020 – September 2022</p>
+        </div>
+
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:scale-105"
+        >
+          <h3 class="text-3xl font-semibold mb-4">Lead Python Engineer</h3>
+          <p>TravelPerk | April 2017 – December 2019</p>
+        </div>
+
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:scale-105"
+        >
+          <h3 class="text-3xl font-semibold mb-4">
+            Python Developer & R&D Engineer
+          </h3>
+          <p>InvoZone | August 2015 – April 2017</p>
+        </div>
+
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:scale-105"
+        >
+          <h3 class="text-3xl font-semibold mb-4">Python Software Developer</h3>
+          <p>Sigma AI | July 2012 – August 2015</p>
+        </div>
+
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:scale-105"
+        >
+          <h3 class="text-3xl font-semibold mb-4">
+            Software Security Consultant
+          </h3>
+          <p>Sigma AI | March 2011 – July 2012</p>
+        </div>
+
+        <div
+          class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d fade-in transition-all transform hover:scale-105"
+        >
+          <h3 class="text-3xl font-semibold mb-4">Research Intern</h3>
+          <p>Amazon | May 2010 – January 2011</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="bg-gray-900 py-20 px-10 text-center">
+      <h2 class="text-5xl font-bold mb-12 fade-in">Projects</h2>
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left"
+      >
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d">
+          <h3 class="text-3xl font-semibold mb-4">
+            E-commerce Search Engine Optimization(November 2023 – Present)
+          </h3>
+          <p>
+            Developed a scalable, AI-powered e-commerce search engine that
+            significantly improved search accuracy and efficiency. Integrated
+            predictive search, automated pagination, and advanced filtering
+            options (price range, categories, brands) to enhance user
+            experience. Utilized Flask for backend services, Redis for caching,
+            and deployed on AWS Lambda for high availability. Incorporated Ant
+            Design for a responsive and visually appealing UI, and managed
+            product data with SQLAlchemy. Resulted in a 30% improvement in user
+            engagement and a 20% increase in conversions.
+          </p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d">
+          <h3 class="text-3xl font-semibold mb-4">
+            DevolvedAI Testnet Development (September 2024 – September 2024)
+          </h3>
+          <p>
+            Being Included in the launching EVM testnet for Argochain using
+            Solidity, Python module and frameworks and gave the DevolvedAI team
+            feedback, and they have made a remarkable improvement in
+            implementing the testnet into reality.
+          </p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d">
+          <h3 class="text-3xl font-semibold mb-4">
+            Bittensor Ecosystem Incentivization (May 2023 – October 2023)
+          </h3>
+          <p>
+            Spearheaded the development of incentive mechanisms for the
+            Bittensor ecosystem, facilitating decentralized AI collaboration.
+            Integrated smart contracts with Solidity and used Python for the
+            creation and management of decentralized APIs. Improved network
+            efficiency by incentivizing participants based on model
+            contributions, increasing active user engagement by 25%. Deployed on
+            AWS for scalable backend operations.
+          </p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d">
+          <h3 class="text-3xl font-semibold mb-4">
+            AI-Powered Predictive Analytics (July 2022 – November 2022)
+          </h3>
+          <p>
+            Developed and fine-tuned AI/ML models, including LLaMA, FinBERT, and
+            LASSO-LSTM, to enhance predictive analytics for financial markets.
+            Resulted in a 20% accuracy improvement in stock price predictions.
+            Integrated RAG techniques for more accurate, real-time
+            decision-making insights, and leveraged Snowflake Cloud for
+            efficient data processing.
+          </p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d">
+          <h3 class="text-3xl font-semibold mb-4">
+            Bittensor Arbitrage Scanner (April 2023 – September 2023)
+          </h3>
+          <p>
+            Built an arbitrage scanner for the Bittensor blockchain, enabling
+            the identification of arbitrage opportunities across decentralized
+            networks. Integrated machine learning algorithms to predict
+            profitable arbitrage windows by analyzing on-chain data. The scanner
+            led to a 20% increase in profitable transactions and reduced manual
+            trading efforts by automating arbitrage opportunities.
+          </p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d">
+          <h3 class="text-3xl font-semibold mb-4">
+            Generative AI for Art and Media Creation (October 2022 – March 2023)
+          </h3>
+          <p>
+            Developed a generative AI system that produces unique digital
+            artwork and media content by training GAN models on extensive art
+            datasets. Deployed on AWS using Docker for scalable computing power.
+            Enhanced the model’s creative output through fine-tuning techniques
+            and data augmentation strategies, leading to a 15% increase in
+            visual quality and engagement.
+          </p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover-3d">
+          <h3 class="text-3xl font-semibold mb-4">
+            AI-based Financial Arbitrage System (January 2022 – June 2022)
+          </h3>
+          <p>
+            Designed and implemented an AI-based system to predict and execute
+            financial arbitrage opportunities in cryptocurrency markets.
+            Fine-tuned the FinBERT model for more accurate sentiment analysis
+            and integrated real-time data feeds. Achieved a 20% increase in
+            arbitrage profitability.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="py-20 px-10 text-center">
+      <h2 class="text-5xl font-bold mb-12 fade-in">Education</h2>
+      <div class="max-w-5xl mx-auto">
+        <h3 class="text-3xl font-semibold mt-6 mb-2">
+          Bachelor of Science in Computer Science
+        </h3>
+        <p>
+          University of Central Florida, April 2006 - September 2010 (3.8 GPA)
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-10 text-center">
+      <h2 class="text-5xl font-bold mb-12 fade-in">Contact Me</h2>
+      <p class="text-lg mb-6 fade-in">
+        Feel free to reach out via email or phone for any inquiries or
+        opportunities.
+      </p>
+      <p class="text-xl mb-6 fade-in">
+        Email:
+        <a
+          href="mailto:taylorvontario@gmail.com"
+          class="text-blue-400 underline"
+          >taylorvontario@gmail.com</a
+        >
+      </p>
+      <p class="text-xl mb-6 fade-in">
+        Phone: <span class="text-blue-400">+1 863 877 0623</span>
+      </p>
+      <a
+        href="https://www.linkedin.com/in/vontario-taylor/"
+        target="_blank"
+        class="bg-white text-blue-500 py-3 px-6 rounded-full hover:bg-gray-200 hover:text-blue-700 transition ease-in-out delay-150 hover-3d"
+        >LinkedIn Profile</a
+      >
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 py-12 text-center">
+      <p class="text-gray-400">© 2024 Vontario Taylor. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Three.js Script -->
+    <script>
+      // Scene setup
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+      const renderer = new THREE.WebGLRenderer({
+        canvas: document.querySelector("#bg"),
+      });
+
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.position.setZ(30);
+
+      // Torus geometry for 3D animation
+      const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+      const material = new THREE.MeshStandardMaterial({ color: 0x7f5af0 });
+      const torus = new THREE.Mesh(geometry, material);
+      scene.add(torus);
+
+      // Light setup
+      const pointLight = new THREE.PointLight(0xffffff);
+      pointLight.position.set(5, 5, 5);
+
+      const ambientLight = new THREE.AmbientLight(0xffffff);
+      scene.add(pointLight, ambientLight);
+
+      // Add stars effect
+      function addStar() {
+        const geometry = new THREE.SphereGeometry(0.25, 24, 24);
+        const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+        const star = new THREE.Mesh(geometry, material);
+
+        const [x, y, z] = Array(3)
+          .fill()
+          .map(() => THREE.MathUtils.randFloatSpread(100));
+        star.position.set(x, y, z);
+        scene.add(star);
+      }
+
+      Array(200).fill().forEach(addStar);
+
+      // Animation loop
+      function animate() {
+        requestAnimationFrame(animate);
+        torus.rotation.x += 0.01;
+        torus.rotation.y += 0.005;
+        torus.rotation.z += 0.01;
+        renderer.render(scene, camera);
+      }
+
+      animate();
+
+      // Adjust canvas on window resize
+      window.addEventListener("resize", () => {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+      });
+    </script>
+  </body>
+</html>
